@@ -4,8 +4,8 @@ public class ListaDeProcessos {
     int tamanho;
     
     public void adicionarFinal(Processo processo) {
-        Node novoNo = new Node();
-        if (cabeca == null) {
+        Node novoNo = new Node(processo);
+        if (cauda == null) {
             cabeca = novoNo;
             cauda = novoNo;
         } else {
@@ -14,10 +14,33 @@ public class ListaDeProcessos {
             tamanho++;
         }
     }
-    public Processo removerInicio() {
+
+    public void removerInicio() {
         if (cabeca == null) {
-            return null;
-        } else 
+            return;
+        }
+        cabeca = cabeca.proximo;
+        if (cabeca != null) {
+            cabeca.anterior = null;
+        } else {
+            cauda = null;
         }
     }
+
+    public int estaVazia() {
+        return tamanho == 0 ? 1 : 0;
+    }
+
+    public int getTamanho() {
+        return tamanho;
+    }
+
+    public void percorrerLista() {
+        Node atual = cabeca;
+        while (atual != null) {
+            System.out.println(atual.processo);
+            atual = atual.proximo;
+        }
+    }
+    
 }
