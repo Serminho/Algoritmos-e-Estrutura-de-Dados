@@ -1,7 +1,7 @@
 public class ListaDeProcessos {
-    Node cabeca;
-    Node cauda;
-    int tamanho;
+    private Node cabeca;
+    private Node cauda;
+    private int tamanho;
     
     public void adicionarFinal(Processo processo) {
         Node novoNo = new Node(processo);
@@ -11,27 +11,28 @@ public class ListaDeProcessos {
         } else {
             cauda.proximo = novoNo;
             cauda = novoNo;
-            tamanho++;
         }
+        tamanho++;
     }
 
-    public void removerInicio() {
+    public Processo removerInicio() {
         if (cabeca == null) {
-            return;
+            return null;
         }
+        Processo processoR = cabeca.processo;
         cabeca = cabeca.proximo;
-        if (cabeca != null) {
-            cabeca.anterior = null;
-        } else {
+        if (cabeca == null) {
             cauda = null;
         }
+        tamanho--;
+        return processoR;
     }
 
-    public int estaVazia() {
-        return tamanho == 0 ? 1 : 0;
+    public boolean estaVazia() {
+        return tamanho == 0;
     }
 
-    public int getTamanho() {
+    public int tamanho() {
         return tamanho;
     }
 

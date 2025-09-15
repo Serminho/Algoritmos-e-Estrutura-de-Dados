@@ -1,44 +1,34 @@
 public class Processo {
-    String nome;
-    int id;
-    int prioridade;
-    String recursoN;
-    boolean requisitado = false;
+    private String nome;
+    private int id;
+    private int prioridade;
+    private String recursoN;
+    private boolean requisitado = false;
+    private int ciclosNecessarios;
 
-    public Processo(String nome, int id, int prioridade, String recursoN) {
+    public Processo(String nome, int id, int prioridade, String recursoN, int ciclosNecessarios) {
         this.nome = nome;
         this.id = id;
         this.prioridade = prioridade;
         this.recursoN = recursoN;
+        this.ciclosNecessarios = ciclosNecessarios;
+        this.requisitado = false;
     }
 
     public String getNome() {
         return nome;
     }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
+ 
     public int getId() {
         return id;
-    }
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getPrioridade() {
         return prioridade;
     }
 
-    public void setPrioridade(int prioridade) {
-        this.prioridade = prioridade;
-    }
-
     public String getRecursoN() {
         return recursoN;
-    }
-    public void setRecursoN(String recursoN) {
-        this.recursoN = recursoN;
     }
 
     public boolean isRequisitado() {
@@ -48,9 +38,17 @@ public class Processo {
         this.requisitado = requisitado;
     }
 
+    public int getCiclosNecessarios() {
+        return ciclosNecessarios;
+    }
+    public void setCiclosNecessarios(int ciclosNecessarios) {
+        this.ciclosNecessarios = ciclosNecessarios;
+    }
+
+
     @Override
     public String toString() {
-        return "Nome: " + nome + " | ID: " + id + " | Prioridade: " + prioridade + " | Recurso: " + recursoN + " | Requisitado: " + requisitado;
+        return "Nome: " + nome + " | ID: " + id + " | Prioridade: " + prioridade + " | Ciclos Necessarios: " + ciclosNecessarios + " | Recurso: " + recursoN + " | Requisitado: " + requisitado;
     }
     
 }
