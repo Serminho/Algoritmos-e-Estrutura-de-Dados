@@ -48,7 +48,7 @@ public class Processo {
 
     @Override
     public String toString() {
-        return "Nome: " + nome + " | ID: " + id + " | Prioridade: " + prioridade + " | Ciclos Necessarios: " + ciclosNecessarios + " | Recurso: " + recursoN + " | Requisitado: " + requisitado;
+        return "Nome: " + nome + " | ID: " + id + " | Prioridade: " + prioridade + " | Ciclos Necessarios: " + ciclosNecessarios + " | Recurso: " + recursoN;
     }
     
 }

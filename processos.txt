@@ -1,0 +1,9 @@
+Ordem de informações:
+
+Nome | Id | Prioridade | Ciclos Necessarios | Recurso
+
+Processos:
+
+P1;1;1;RecursoA;3
+P2;2;2;RecursoB;5
+P3;3;3;RecursoC;2

@@ -2,8 +2,7 @@ public class Scheduler {
     private ListaDeProcessos listaAlta = new ListaDeProcessos();
     private ListaDeProcessos listaMedia = new ListaDeProcessos();
     private ListaDeProcessos listaBaixa = new ListaDeProcessos();
-    private ListaDeProcessos listaBloqueados = new ListaDeProcessos();
-    private int numeroCiclo = 0;
+    private int numeroCiclo = 1;
 
     public void adicionarProcesso(Processo processo) {
         if (processo.getPrioridade() == 1) {
