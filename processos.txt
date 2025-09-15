@@ -1,6 +1,6 @@
 Ordem de informações:
 
-Nome | Id | Prioridade | Ciclos Necessarios | Recurso
+Nome | Id | Prioridade | Recurso | Ciclos Necessarios
 
 Processos:
 
