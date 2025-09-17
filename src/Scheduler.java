@@ -5,6 +5,7 @@ public class Scheduler {
     private ListaDeProcessos listaBloqueados = new ListaDeProcessos();
     private int numeroCiclo = 1;
     private int contadorAlta = 0;
+    private int contadorMedia = 0;
 
     public Scheduler() {
     }
@@ -23,13 +24,17 @@ public class Scheduler {
 
     public void executarCiclo() {
         if (!listaBloqueados.estaVazia()) {
-            Processo Desbloqueado = listaBloqueados.removerInicio();
-            System.out.println("Desbloqueando processo: " + Desbloqueado.getNome());
-            adicionarProcesso(Desbloqueado);
+            Processo desbloqueado = listaBloqueados.removerInicio();
+            System.out.println("Desbloqueando processo: " + desbloqueado.getNome());
+            adicionarProcesso(desbloqueado);
         }
         
         Processo processoAtual = null;
-        if (contadorAlta >= 5) {
+        if (contadorMedia >= 5 && !listaBaixa.estaVazia()) {
+            processoAtual = listaBaixa.removerInicio();
+            contadorMedia = 0;
+        }
+        if (processoAtual == null && contadorAlta >= 5) {
             if (!listaMedia.estaVazia()) {
                 processoAtual = listaMedia.removerInicio();
                 contadorAlta = 0;
@@ -42,12 +47,15 @@ public class Scheduler {
             if (!listaAlta.estaVazia()) {
                 processoAtual = listaAlta.removerInicio();
                 contadorAlta++;
+                contadorMedia = 0;
             } else if (!listaMedia.estaVazia()) {
                 processoAtual = listaMedia.removerInicio();
+                contadorMedia++;
                 contadorAlta = 0;
             } else if (!listaBaixa.estaVazia()) {
                 processoAtual = listaBaixa.removerInicio();
                 contadorAlta = 0;
+                contadorMedia = 0;
             }
             else {
                 System.out.println("Nenhum processo para executar no ciclo " + numeroCiclo);
@@ -85,17 +93,18 @@ public class Scheduler {
         listaBaixa.percorrerLista();
         System.out.print("| Bloqueados: \n");
         listaBloqueados.percorrerLista();
-        System.out.println("\n|========================================");
+        System.out.println("\n+========================================+");
         numeroCiclo++;
 
     }
 
 
     public void teste() {
-        while (!listaAlta.estaVazia() || !listaMedia.estaVazia() || !listaBaixa.estaVazia()) {
+        while (!listaAlta.estaVazia() || !listaMedia.estaVazia() || !listaBaixa.estaVazia() || !listaBloqueados.estaVazia()) {
             executarCiclo();
         }
-        System.out.println("Todos os processos foram concluídos.");
+        System.out.println("|Todos os processos foram concluídos.");
+        System.out.println("+========================================+");
     }
 }
 

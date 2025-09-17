@@ -5,6 +5,7 @@ public class Processo {
     private String recursoN;
     private boolean requisitado = false;
     private int ciclosNecessarios;
+    private int prioridadeOriginal;
 
     public Processo(String nome, int id, int prioridade, String recursoN, int ciclosNecessarios) {
         this.nome = nome;
@@ -13,6 +14,7 @@ public class Processo {
         this.recursoN = recursoN;
         this.ciclosNecessarios = ciclosNecessarios;
         this.requisitado = false;
+        this.prioridadeOriginal = prioridade;
     }
 
     public String getNome() {
@@ -43,6 +45,10 @@ public class Processo {
     }
     public void setCiclosNecessarios(int ciclosNecessarios) {
         this.ciclosNecessarios = ciclosNecessarios;
+    }
+
+    public int getPrioridadeOriginal(){
+        return prioridadeOriginal;
     }
 
 
