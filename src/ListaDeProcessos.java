@@ -2,6 +2,12 @@ public class ListaDeProcessos {
     private Node cabeca;
     private Node cauda;
     private int tamanho;
+
+    public ListaDeProcessos(){
+        this.cabeca = null;
+        this.cauda = null;
+        this.tamanho = 0;
+    }
     
     public void adicionarFinal(Processo processo) {
         Node novoNo = new Node(processo);
@@ -42,6 +48,17 @@ public class ListaDeProcessos {
             System.out.println(atual.processo);
             atual = atual.proximo;
         }
+    }
+
+    public boolean contemId(int id){
+        Node atual = cabeca;
+        while (atual != null) {
+            if (atual.processo.getId() == id) {
+                return true;
+            }
+            atual = atual.proximo;
+        }
+        return false;
     }
     
 }
