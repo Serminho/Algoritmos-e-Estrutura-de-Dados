@@ -92,15 +92,16 @@ Instalar JDK:
 ```bash
 brew update
 brew install openjdk@17
+```
 
 Link (se necessário):
 ```bash
 sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk
 export JAVA_HOME=$(/usr/libexec/java_home -v 17)
 export PATH=$JAVA_HOME/bin:$PATH
+```
 
 Abra um novo terminal.
-```
 #### Ubuntu / Debian
 ```bash
 sudo apt update

@@ -1,9 +1,10 @@
+// Classe para o processo do codigo
 public class Processo {
     private String nome;
     private int id;
     private int prioridade;
     private String recursoN;
-    private boolean requisitado = false;
+    private boolean requisitado = false; // Controla o bloqueio para o recurso
     private int ciclosNecessarios;
     private int prioridadeOriginal;
 
@@ -17,6 +18,7 @@ public class Processo {
         this.prioridadeOriginal = prioridade;
     }
 
+    // Getters e setters
     public String getNome() {
         return nome;
     }
@@ -51,7 +53,7 @@ public class Processo {
         return prioridadeOriginal;
     }
 
-
+    // Representação em texto do processo
     @Override
     public String toString() {
         return "| Nome: " + nome + " | ID: " + id + " | Prioridade: " + prioridade + " | Ciclos Necessarios: " + ciclosNecessarios + " | Recurso: " + recursoN;

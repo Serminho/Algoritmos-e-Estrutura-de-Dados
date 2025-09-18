@@ -1,3 +1,5 @@
+// Nó da ListaDeProcessos (Cada nó possui um processo)
+
 public class Node {
     Processo processo;
     Node proximo;
