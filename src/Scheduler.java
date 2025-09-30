@@ -32,7 +32,7 @@ public class Scheduler {
          // Desbloqueia o processo mais antigo da lista de bloqueados
         if (!listaBloqueados.estaVazia()) {
             Processo desbloqueado = listaBloqueados.removerInicio();
-            System.out.println("Desbloqueando processo: " + desbloqueado.getNome());
+            System.out.println("| Desbloqueando processo: " + desbloqueado.getNome());
             adicionarProcesso(desbloqueado);
         }
         
@@ -79,7 +79,7 @@ public class Scheduler {
             if (processoAtual.getRecursoN().equalsIgnoreCase("DISCO") && !processoAtual.isRequisitado()) {
                 processoAtual.setRequisitado(true);
                 listaBloqueados.adicionarFinal(processoAtual);
-                System.out.println("Processo " + processoAtual.getNome() + " está bloqueado aguardando recurso.");
+                System.out.println("| Processo " + processoAtual.getNome() + " está bloqueado aguardando recurso.");
                 processoAtual = null;
             }
         }
@@ -100,16 +100,14 @@ public class Scheduler {
         }
 
         // Imprime o estado atual das listas
-        System.out.println("| Estado das listas no final do ciclo: " + numeroCiclo);
-        System.out.print("| Alta: \n");
-        listaAlta.percorrerLista();
-        System.out.print("| Média: \n");
-        listaMedia.percorrerLista();
-        System.out.print("| Baixa: \n");
-        listaBaixa.percorrerLista();
-        System.out.print("| Bloqueados: \n");
-        listaBloqueados.percorrerLista();
-        System.out.println("\n+========================================+");
+        StringBuilder estado = new StringBuilder();
+        estado.append("| Estado das listas no final do ciclo: ").append(numeroCiclo).append("\n");
+        estado.append("| Alta: ").append(listaAlta).append("\n");
+        estado.append("| Média: ").append(listaMedia).append("\n");
+        estado.append("| Baixa: ").append(listaBaixa).append("\n");
+        estado.append("| Bloqueados: ").append(listaBloqueados).append("\n");
+        estado.append("\n+========================================+");
+        System.out.println(estado.toString());
         numeroCiclo++;
 
     }

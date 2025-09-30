@@ -67,5 +67,35 @@ public class ListaDeProcessos {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        if (cabeca == null) return "vazia";
+
+        StringBuilder sb = new StringBuilder();
+        Node atual = cabeca;
+        int mostrando = 0;
+        final int mostrarMax = 20;
+
+        while (atual != null && mostrando < mostrarMax) {
+            Processo p = atual.processo;
+
+            sb.append("\n| " + p.getNome())
+            .append(" | ID: ").append(p.getId())
+            .append(" | Ciclos: ").append(p.getCiclosNecessarios());
+            mostrando++;
+            atual = atual.proximo;
+        }
+        if (atual != null) {
+            int restantes = 0;
+            Node temp = atual;
+            while (temp != null) {
+                restantes++;
+                temp = temp.proximo;
+            }
+            sb.append("\n| ... e mais ").append(restantes).append(" processos.");
+        }
+        return sb.toString();
+    }
     
 }
